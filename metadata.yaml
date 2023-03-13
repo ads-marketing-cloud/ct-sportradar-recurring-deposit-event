@@ -1,0 +1,9 @@
+homepage: "https://sportradar.com"
+documentation: "https://github.com/ads-marketing-cloud/ct-sportradar-recurring-deposit-event"
+versions:
+ # Latest version
+ - sha: 82bb72cc06d7fadf09078d31e3fb4e52c8b73a4c
+   changeNotes: Create initial template.
+ # Older versions
+ - sha: 2fa79fcf48dd621d4a0b7b3654bab95bef45d321
+   changeNotes: Create repository.
