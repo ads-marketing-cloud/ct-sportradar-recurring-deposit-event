@@ -206,6 +206,33 @@ scenarios:
 
     assertApi('gtmOnFailure').wasNotCalled();
     assertApi('gtmOnSuccess').wasCalled();
+- name: Should push event with correct values
+  code: |-
+    const setInWindow = require('setInWindow');
+    const mockData = {
+      userId: 33,
+      transactionId: 44,
+      amount: 120,
+      currency: "EUR",
+    };
+    setInWindow('srtmCommands', [], true);
+
+    runCode(mockData);
+
+    const copyFromWindow = require('copyFromWindow');
+    const srtmCommands = copyFromWindow('srtmCommands');
+    assertThat(srtmCommands).isEqualTo([
+      {
+      event: "track.betting.deposit",
+      payload: {
+        action: "created",
+        userId: mockData.userId,
+        transactionId: mockData.transactionId,
+        amount: mockData.amount,
+        currency: mockData.currency,
+      },
+    }
+    ]);
 
 
 ___NOTES___
